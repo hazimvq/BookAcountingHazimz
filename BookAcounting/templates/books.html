@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BookCurs | Регистрация книг</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <h1 class="logo">📚 BookCurs</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Главная</a></li>
+                <li><a href="{{ url_for('books_page') }}">Регистрация книг</a></li>
+                <li><a href="{{ url_for('progress') }}">Прогресс чтения</a></li>
+                <li><a href="{{ url_for('reports_page') }}">Отчёты</a></li>
+                <li><a href="{{ url_for('registration') }}">Регистрация</a></li>
+                <li><a href="{{ url_for('login') }}">Логин</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="main">
+    <section class="content">
+        <!-- Страница регистрации книг -->
+        <div class="book-registration">
+            <h2>Регистрация книги</h2>
+            <form class="book-form" action="{{ url_for('add_book') }}" method="POST">
+                <input
+                        type="text"
+                        name="book-title"
+                        placeholder="Название книги"
+                        id="book-title"
+                        required
+                />
+                <input
+                        type="text"
+                        name="book-author"
+                        placeholder="Автор"
+                        id="book-author"
+                        required
+                />
+                <input
+                        type="number"
+                        name="book-year"
+                        placeholder="Год выпуска"
+                        id="book-year"
+                        required
+                />
+                <textarea
+                        name="book-description"
+                        placeholder="Описание книги"
+                        id="book-description"
+                        required
+                ></textarea>
+                <button class="cta-button" type="submit">Добавить книгу</button>
+            </form>
+        </div>
+    </section>
+</main>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

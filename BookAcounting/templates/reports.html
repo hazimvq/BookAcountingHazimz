@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}BookCurs | Отчеты {% endblock %}
+
+{% block content %}
+<main class="main">
+    <section class="content">
+        <!-- Страница отчетов -->
+        <div class="reading-reports">
+            <h2>Отчёты о прочитанных книгах</h2>
+            <div class="report-container">
+                {% if reports %}
+                {% for report in reports %}
+                <div class="report-item">
+                    <h3>{{ report.title }}</h3>
+                    <p>Автор: {{ report.author }}</p>
+                    <p>Год: {{ report.year }}</p>
+                    <p>Описание: {{ report.description }}</p>
+                    <p>Прочитано: {{ report.pages_read }}</p>
+
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>Отчётов пока нет.</p>
+                {% endif %}
+            </div>
+
+
+
+        </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

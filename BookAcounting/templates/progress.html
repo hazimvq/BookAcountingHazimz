@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}BookCurs | Прогресс {% endblock %}
+
+{% block content %}
+<section class="content">
+    <!-- Страница учета прогресса -->
+    <div class="reading-progress">
+        <h2>Ваш прогресс чтения</h2>
+        <div class="progress-container">
+            {% for book in books %}
+            <div class="progress-item">
+                <h3>{{ book.title }}</h3>
+                <div class="progress-bar">
+                    <progress value="{{ book.progress }}" max="100"></progress>
+                    <span class="progress-text">{{ book.progress }}%</span>
+                </div>
+                <p>Автор: {{ book.author }}</p>
+                <p><strong>Комментарий:</strong> процессе чтение</p>
+
+                <!-- Кнопки изменения прогресса -->
+                <form action="/update_progress" method="POST">
+                    <input type="hidden" name="book_id" value="{{ book.id }}">
+                    <button class="btn1" type="submit" name="action" value="increase">Увеличить прогресс</button>
+                    <button class="btn1" type="submit" name="action" value="decrease">Уменьшить прогресс</button>
+                </form>
+            </div>
+            {% endfor %}
+            <style>.btn1 {
+  background-color: #4CAF50; /* Зеленый цвет */
+  color: white; /* Белый текст */
+  border: none; /* Без границы */
+  padding: 10px 20px; /* Внутренний отступ */
+  text-align: center; /* Выравнивание текста */
+  text-decoration: none; /* Без подчеркивания */
+  display: inline-block; /* Для корректного отображения */
+  font-size: 16px; /* Размер текста */
+  margin: 4px 2px; /* Внешний отступ */
+  cursor: pointer; /* Курсор в виде руки */
+  border-radius: 5px; /* Скругленные углы */
+  transition: background-color 0.3s ease; /* Анимация изменения цвета */
+}
+
+.btn1:hover {
+  background-color: #45a049; /* Цвет при наведении */
+}
+
+.btn1:active {
+  background-color: #3e8e41; /* Цвет при нажатии */
+  box-shadow: 0 5px #666; /* Тень при нажатии */
+  transform: translateY(4px); /* Смещение вниз при нажатии */
+}
+            </style>
+
+
+        </div>
+    </div>
+</section>
+{% endblock %}
